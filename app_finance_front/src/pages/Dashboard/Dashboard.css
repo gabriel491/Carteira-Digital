@@ -96,6 +96,11 @@
   border-bottom: none;
 }
 
+p.expense {
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* Coluna 1: Textos da despesa (ocupa todo o espaço restante) */
 .expense-info {
   flex: 1;

@@ -98,13 +98,13 @@ function Dashboard() {
       // Faz o disoparo PATCH para a rota do backend
       await api.patch(`expenses/${expenseId}`, upadateStatus);
 
-      // chamamos o GET novamente para atualizar a lista na tela  
+      // chamamos o GET novamente para atualizar a lista na tela
       await fetchExpenses();
     } catch (error) {
       console.log("Erro ao atualizar status da despesa: ", +error);
       alert("Não foi possível atualizar o status de pagamento.");
     }
-  }
+  };
 
   return (
     <div className="dashboard-container">
@@ -164,8 +164,10 @@ function Dashboard() {
               {expenses.map((expense) => (
                 <li key={expense._id} className="expense-item">
                   <div>
-                    <strong>{expense.itemName}</strong> - R${" "}
-                    {expense.value.toFixed(2)}
+                    <p className="expense-name">
+                      <strong>{expense.itemName}</strong> - R${" "}
+                      {expense.value.toFixed(2)}
+                    </p>
                     <div>
                       <span className="category-tag">
                         🏷️ {expense.category}
@@ -179,13 +181,15 @@ function Dashboard() {
                   <span className={expense.isPaid ? "paid" : "pending"}>
                     {expense.isPaid ? "✅ Paga" : "⏳ Pendente"}
                   </span>
-                    
-                    <div className="expense-actions">
-                      <button
+
+                  <div className="expense-actions">
+                    <button
                       className="status-btn"
-                      onClick={() => handleTogglePaid(expense._id, expense.isPaid)}
-                      >
-                        {expense.isPaid ? "↩️ Desmarcar" : "💰 Marcar como Paga"}
+                      onClick={() =>
+                        handleTogglePaid(expense._id, expense.isPaid)
+                      }
+                    >
+                      {expense.isPaid ? "↩️ Desmarcar" : "💰 Marcar como Paga"}
                     </button>
 
                     <button
@@ -194,8 +198,7 @@ function Dashboard() {
                     >
                       Excluir
                     </button>
-                    </div>
-                    
+                  </div>
                 </li>
               ))}
             </ul>
