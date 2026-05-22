@@ -1,0 +1,192 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+/* Layout em duas colunas */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilo do Formulário */
+.expense-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #eef2f5;
+  height: fit-content;
+}
+
+.expense-form h2 {
+  margin-top: 0;
+  color: #34495e;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.expense-form input,
+.expense-form select,
+.expense-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.expense-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.expense-form button:hover {
+  background-color: #27ae60;
+}
+
+/* Estilo da Lista */
+.expense-list {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #eef2f5;
+}
+
+.expense-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Linha da despesa organizada */
+.expense-item {
+  padding: 20px 10px;
+  border-bottom: 1px solid #edf2f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+/* Coluna 1: Textos da despesa (ocupa todo o espaço restante) */
+.expense-info {
+  flex: 1;
+  min-width: 0; 
+}
+
+.expense-info strong {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.category-tag {
+  display: inline-block;
+  background: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #4a5568;
+  margin-top: 6px;
+}
+
+.desc {
+  font-size: 13px;
+  color: #718096;
+  margin: 8px 0 0 0;
+}
+
+/* Coluna 2: Badge de Status*/
+.paid, .pending {
+  width: 90px;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  display: inline-block;
+  flex-shrink: 0; 
+}
+
+.paid {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.pending {
+  background: #feebc8;
+  color: #744210;
+}
+
+/* Coluna 3: Grupo de botões de ação */
+.expense-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.status-btn {
+  width: 170px; 
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  border: 1px solid #cbd5e0;
+  background-color: #4a5568;
+  color: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.status-btn:hover {
+  background-color: #2d3748;
+}
+
+/* Botão de Excluir*/
+.delete-btn {
+  width: 90px;
+  background-color: #fed7d7;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.delete-btn:hover {
+  background-color: #e53e3e;
+  color: white;
+}
