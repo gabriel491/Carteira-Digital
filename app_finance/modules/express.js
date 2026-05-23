@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const ExpenseModel = require("../src/models/expenseControl.model");
 const UserModel = require("../src/models/user.model");
+const { register, login } = require("../src/controller/authController")
 
 const app = express();
 // Libera o acesso ao Frontend
@@ -12,6 +14,10 @@ app.use(express.json());
 app.get("/home", (req, res) => {
   res.send("<h1>Bem Vindo a Home</h1>");
 });
+
+// Rotas de Autenticação
+app.post("/auth/register", register);
+app.post("/auth/login", login);
 
 // Criar nova despesa
 app.post("/expenses", async (req, res) =>{
