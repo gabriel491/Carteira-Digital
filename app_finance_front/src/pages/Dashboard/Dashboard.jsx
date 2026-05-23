@@ -108,7 +108,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <h1 className="dashboard-title">📊 Meu Dashboard de Despesas</h1>
+      <h1 className="dashboard-title">Meu Dashboard de Despesas</h1>
 
       <div className="dashboard-grid">
         {/* Formulário */}
