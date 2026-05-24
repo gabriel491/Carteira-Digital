@@ -25,7 +25,7 @@ function Login() {
 
       // Salva o token e os dados do usuário no LocalStorage do navegador para manter a sessão ativa
       localStorage.setItem("@FinanceApp:token", token);
-      localStorage.setItem("@FinanceApp:userId", user.id);
+      localStorage.setItem("@FinanceApp:userId", user.id || user._id); // Dependendo de como o backend retorna o ID, pode ser 'id' ou '_id'
       localStorage.setItem("@FinanceApp:userName", user.firstName);
 
       alert(`Bem vindo de Volta, ${user.firstName}! 🚀`);

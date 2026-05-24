@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import "./Dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+const navigate = useNavigate();
+
   const [expenses, setExpenses] = useState([]);
-  const userId = "69f787be262a30b969e5d54e"; // Seu ID do MongoDB
+  // Pega dinamicamente o ID do usuário que acabou de fazer login!
+  const userId = localStorage.getItem("@FinanceApp:userId");
+  const userName = localStorage.getItem("@FinanceApp:userName");
 
   // Estados para capturar os dados do formulário
   const [itemName, setItemName] = useState("");
@@ -95,7 +100,7 @@ function Dashboard() {
       // inverter o status atual
       const upadateStatus = { isPaid: !currentStatus };
 
-      // Faz o disoparo PATCH para a rota do backend
+      // Faz o disparo PATCH para a rota do backend
       await api.patch(`expenses/${expenseId}`, upadateStatus);
 
       // chamamos o GET novamente para atualizar a lista na tela
@@ -105,11 +110,26 @@ function Dashboard() {
       alert("Não foi possível atualizar o status de pagamento.");
     }
   };
+  // Função de Logout: Limpa o LocalStorage e redireciona para a página de login
+  const handleLogout = () => {
+    localStorage.clear(); // Apaga o token e os IDs salvos
+    navigate("/"); // Redireciona para a página de login
+  };
 
   return (
     <div className="dashboard-container">
       <h1 className="dashboard-title">Meu Dashboard de Despesas</h1>
 
+      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <button
+          onClick={handleLogout}
+          className="delete-btn"
+          style={{ width: "auto" }}
+        >
+          🚪 Sair do Sistema
+        </button>
+
+      </div>
       <div className="dashboard-grid">
         {/* Formulário */}
         <form onSubmit={handleSubmit} className="expense-form">
@@ -156,7 +176,7 @@ function Dashboard() {
 
         {/* Listagem */}
         <div className="expense-list">
-          <h2 className="dashboard-title">Suas Despesas Cadastradas:</h2>
+          <h2 className="dashboard-title">Dashboard de {userName}:</h2>
           {expenses.length === 0 ? (
             <p>Nenhuma despesa encontrada para este usuário.</p>
           ) : (
