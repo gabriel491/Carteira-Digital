@@ -29,7 +29,7 @@
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid #eef2f5;
   height: fit-content;
 }
@@ -72,7 +72,7 @@
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid #eef2f5;
 }
 
@@ -104,7 +104,7 @@ p.expense {
 /* Coluna 1: Textos da despesa (ocupa todo o espaço restante) */
 .expense-info {
   flex: 1;
-  min-width: 0; 
+  min-width: 0;
 }
 
 .expense-info strong {
@@ -137,7 +137,7 @@ p.expense {
   font-size: 13px;
   font-weight: bold;
   display: inline-block;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .paid {
@@ -159,7 +159,7 @@ p.expense {
 }
 
 .status-btn {
-  width: 170px; 
+  width: 170px;
   padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
@@ -194,4 +194,14 @@ p.expense {
 .delete-btn:hover {
   background-color: #e53e3e;
   color: white;
+}
+
+@media (min-width: 992px) {
+  .expense-form {
+    position: -webkit-sticky;
+    /* Para navegadores antigos como Safari */
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+  }
 }
