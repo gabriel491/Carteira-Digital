@@ -33,7 +33,7 @@ function Register() {
         email: cleanEmail,
         password: cleanPassword,
       });
-      alert(`Conta criada com sucesso! 🎉 Você já pode fazer login.`);
+    alert(response.data.message || `Conta criada com sucesso! 🎉`);
 
       // Redirecionar para a página de dashboard
       navigate("/");
