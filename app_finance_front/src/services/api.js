@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "http://localhost:3000", 
 });
-
+ 
 
 // Interceptador para adicionar o token de autenticação em todas as requisições
 api.interceptors.request.use((config) => {
