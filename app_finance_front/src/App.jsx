@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import "./App.css";
 
@@ -9,6 +10,8 @@ function App() {
       <Routes>
         {/* Quando a URL for http://localhost:5173/ mostra o Login */}
         <Route path="/" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
         
         {/* Quando a URL for http://localhost:5173/dashboard mostra o Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />

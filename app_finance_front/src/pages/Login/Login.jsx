@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../../services/api";
 import "./Login.css";
 
@@ -16,9 +16,17 @@ function Login() {
       return;
     }
 
+    // LIMPEZA: Remove espaços em branco nas pontas e quebras de linha/caracteres ocultos
+    const cleanEmail = email.trim().replace(/[\n\r\t]/g, "");
+    const cleanPassword = password.trim().replace(/[\n\r\t]/g, "");
+
     try {
       // Faz o disparo real para a rota de login do backend
-      const response = await api.post("/auth/login", { email, password });
+      // Agora enviamos as strings 100% limpas para o backend
+      const response = await api.post("/auth/login", {
+        email: cleanEmail,
+        password: cleanPassword,
+      });
 
       // Desestruturamos a resposta para pegar o token e os dados do usuário que o backend retornou
       const { token, user } = response.data;
@@ -35,7 +43,7 @@ function Login() {
     } catch (error) {
       console.error("Erro ao fazer login:", error);
       const errorMsg =
-        error.response?.data?.message || "Erro ao concectar com o servidor.";
+        error.response?.data?.message || "Erro ao conectar com o servidor.";
       alert("Ops! " + errorMsg);
     }
   };
@@ -63,6 +71,10 @@ function Login() {
           </div>
           <button type="submit">Entrar</button>
         </form>
+
+        <p className="auth-redirect">
+          Não tem uma conta? <Link to="/register" style={{ color: "#3498db", fontWeight: "bold", textDecoration: "none" }}>Cadastre-se aqui</Link>
+        </p>
       </div>
     </div>
   );
